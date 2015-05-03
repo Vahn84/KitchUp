@@ -1,0 +1,158 @@
+<ion-modal-view view-title="Aggiungi prodotto">
+
+
+ 
+ <ion-header-bar class="blueBg whiteColor">
+    
+    <div class="buttons whiteColor">
+      <button class="button button-clear whiteColor" ng-click="closeAddProduct()"><i class="ion-android-arrow-back whiteColor"></i> </span></button>
+    </div>
+	<h1 class="title whiteColor">Aggiungi prodotto</h1>
+	
+  </ion-header-bar>
+ 
+ 
+
+
+<form name="form.addProduct" id="form" novalidate>
+  <ion-content class="has-bottom has-header" >
+  
+  
+  
+  
+
+
+<div class="row adjust-image blueBg headImg">
+    <div class="col-50">
+  <img  class="adjust-image" src="./img/catcod.png" >
+  </div>
+  
+    <div class="col-50">
+   
+  </div>
+  
+</div>
+  
+  
+  <div class="list list-inset">
+
+	 <p>E’ fortemente consigliato inserire, laddove possibile, il codice a barre del prodotto. Questo eviterà, di dover reinserire più volte le info riguardanti lo stesso.</p>   
+	
+	<div class="item item-input-inset">
+    <label class="item-input-wrapper">
+     <i class="icon ion-search placeholder-icon"></i> <input class="" type="text" ng-model="postData.barcode" placeholder="Codice"> 
+    </label>
+   <a class="button icon ion-android-camera" ng-click="scanBarcode()"></a>
+  </div>
+	
+	
+	
+	
+	<h2 class="blueColor">Dettagli Prodotto</h2>
+	
+	<label class="item item-input border-bottom-blueColor">
+   <i class="icon ion-search placeholder-icon"></i>
+    <input class="" type="text" ng-model="postData.nome" placeholder="Nome">
+  </label>
+
+<label class="item item-input border-bottom-blueColor">
+    <i class="icon ion-search placeholder-icon"></i>
+    <input class="" type="text" ng-model="postData.marca_azienda" placeholder="Azienda/Marca">
+  </label>
+
+
+
+   <label class="item item-input item-select  border-bottom-blueColor" > 
+   <i class="icon ion-android-list placeholder-icon"></i>
+      
+    <select ng-model="postData.fk_tag_id" ng-options="obj.id as obj.name for obj in listaCategorie">
+      <option value="" selected>Categoria</option>
+      <option >Carne</option>
+      <option>Frutta</option>
+    </select>
+  </label>
+	
+	 <h4 style="  font-size: 16px">Imposta la data di scadenza del prodotto</h4>
+    <label class="item item-input border-bottom-blueColor">
+	 <i class="icon ion-calendar placeholder-icon"></i>
+     <input class="" type="date" ng-model="postData.data_scadenza" placeholder="">
+    </label>
+  
+
+
+
+
+
+
+
+ <label class="item item-input border-bottom-blueColor">
+	<i class="icon ion-android-list placeholder-icon"></i>
+      <input  ng-model="postData.q_peso" type="number" placeholder="peso prodotto in grammi">
+    </label>
+	
+	<label class="item-input item border-bottom-blueColor">
+	<i class="icon ion-android-list placeholder-icon"></i>
+      <input  ng-model="postData.q_numero" type="number" placeholder="n° pezzi nella confezione">
+    </label>
+
+
+
+	
+	
+	
+	<ion-toggle ng-model="kitchupData.prodotto_preconfezionato" toggle-class="toggle-calm" class="" ng-model="postData.preconfezionato"  ng-true-value="1"  ng-false-value="0" checked="postData.preconfezionatoBoolean">Prodotto preconfezionato</ion-toggle>
+	
+	<ion-toggle ng-model="kitchupData.enableAutoList" toggle-class="toggle-calm" class="" ng-model="kitchupData.lista_spesa_si_no"  ng-true-value="1"  ng-false-value="0" checked="true">Entra in lista della spesa</ion-toggle>
+	<p>Se abiliti questa opzione, il prodotto entra in lista della spesa automaticamente una volta raggiunte le quantità minime impostate per il prodotto</p>
+	
+
+	
+	 <h4 style="  font-size: 16px">Imposta quantità minima del prodotto</h4>
+	<p>Per quantità minima si intende la quantità di prodotto nella confezione</p>
+
+  
+
+  
+     
+	  
+	
+<div class="row">
+<div class="col-50 border-bottom-blueColor">
+
+ <input class="" ng-model="kitchupData.min_q_prodotto" type="number" placeholder="Q.tà min prodotto">
+</div>
+
+
+<div class="col col-50 border-bottom-blueColor">
+  <label class="item item-input item-select ">
+      
+    <select ng-model="kitchupData.misura" ng-options="obj.id as obj.name for obj in listaMisure">
+      <option  value="" >Unità di misura</option>
+      
+     
+    </select>
+  </label>
+	
+</div>	
+    
+  
+
+</div>
+	
+	
+</div>
+  </ion-content>
+  
+  <div class="fixed-outside">
+      <div class="row">
+            <div class="col">
+                
+            </div>
+            <div class="col col-25">
+                <a class="button button-circle button-positive icon ion-android-checkmark-circle" ng-click="insertProdotto()" ></a>
+            </div>
+        </div>
+
+    </div>
+ </form>
+</ion-modal-view>

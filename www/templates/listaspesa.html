@@ -1,0 +1,95 @@
+<ion-view view-title="Lista della spesa">
+  <ion-content class="has-bottom">
+  
+  <div class="row adjust-image blueBg headImg">
+  <div class="col-50">
+  <img  class="adjust-image" src="./img/listaspesa.png" >
+  </div>
+  
+  <div class="col-50">
+   <div class="col align-text-right whiteColor"><a class="button icon-left ion-android-send button-clear button-dark whiteColor">CONCLUDI SPESA</a></div>  
+  </div>
+  
+</div>
+
+
+  
+  
+  <!-- <ion-list>
+   
+	  <ion-item ng-repeat="prodotto in prodotti" class="item-remove-animate item-icon-right" >
+	  
+	  <div class="row"> 
+	  <div class="col">
+	 
+        
+        <input required type="number" value="1" step="any" name="rate"  min="1" max="4999">
+        </div>
+     
+	  
+	 
+	  <div class="col col-90"><h2>{{prodotto.nome}}</h2><p>Peso: {{prodotto.peso}} - Q.tà nella confezione: {{prodotto.numero_nella_confezione}}</div>
+	  <i class="icon ion-chevron-right icon-accessory"></i>
+		
+	</div>
+	  
+        <ion-option-button class="button-assertive" ng-click="">
+          Delete
+        </ion-option-button>
+      </ion-item>
+	  
+	  
+
+	  
+	  
+	  
+    </ion-list> -->
+	
+	
+		 <div class="card" ng-repeat="prodotto in prodotti">
+
+		  <div class="item item-text-wrap">
+			<div class="row"> 
+			  
+			 
+			  
+			 
+			  <div class="col col-80"><h2 class="listTitle">{{prodotto.nome}}</h2></div>
+			  
+			  <div class="col-10">
+			 
+				
+				<input required class="border-bottom-blue" type="number" value="1" step="any" name="rate"  min="1" max="4999">
+				</div>
+				
+				
+			  <div class="col-10">
+				<p>gr</p>
+				</div>	
+			 
+				
+			</div>
+		  </div>
+		  <div class="item item-divider align-text-right">
+		   <i class="icon ion-trash icon-accessory"></i><p>Peso: {{prodotto.peso}} - Q.tà nella confezione: {{prodotto.numero_nella_confezione}}</p>
+		  </div>
+		</div>
+	
+   
+    </ion-content>
+	
+	<div class="fixed-outside">
+      <div class="row">
+            <div class="col">
+                
+            </div>
+            <div class="col col-25">
+                <a on-tap="liked=!liked"  ng-class="{'': liked, 'ripple-effect': !liked}" class="ripple button button-circle button-positive icon ion-android-add" ng-click="addProduct()"></a>
+            </div>
+        </div>
+
+    </div>
+   
+	
+	
+</ion-view>
