@@ -77,7 +77,6 @@ angular.module('starter.controllers', [])
 	var currentStart = 0;
 	var productAlreadyExist = false;
 	
-	$scope.postData.barcode = 000;
 	
 	$ionicModal.fromTemplateUrl('templates/addproduct.html', {
 		scope: $scope
@@ -147,7 +146,20 @@ angular.module('starter.controllers', [])
 	 
 	if(!productAlreadyExist){
 	console.log("prodotto non esistente");
-     Prodotto.save({}, $scope.postData, saveSuccess(postProdotto), saveError);
+	
+    Prodotto.save({}, $scope.postData, function(data){ 
+	 
+	 console.log("prodotto inserito correttamente!")
+		$scope.modal.hide();
+		$scope.giveKitchupDataToPostData();
+		$scope.postData.id = data.prodotto.id;
+		$scope.addItem($scope.postData);
+	 
+	 }, function(){
+		 
+		 console.log("Errore durante l'inserimento!");
+		 
+	 });
 	}
 	
 	else {
@@ -159,20 +171,7 @@ angular.module('starter.controllers', [])
 	
 	}
 	
-	function saveSuccess (postProdotto){
-		console.log("prodotto inserito correttamente!")
-		$scope.modal.hide();
-		$scope.giveKitchupDataToPostData();
-		$scope.postData.id = postProdotto.prodotto.id;
-		$scope.addItem($scope.postData);
-		
-		
-	}
-	
-	function saveError (){
-		console.log("Errore durante l'inserimento!")
-		
-	}
+
 	
 
   };
